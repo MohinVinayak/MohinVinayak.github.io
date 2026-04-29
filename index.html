@@ -410,53 +410,53 @@
     }
 
     /* CONTACT */
-/* CONTACT SECTION & AMAZING EFFECT - REFINED */
-    #contact { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
-    .ct-big { font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 700; }
-    .ct-big strong { font-weight: 800; color: #fff; }
-    
-    .ct-big span.systems-glow { 
-      color: transparent; 
-      -webkit-text-stroke: 2px #fff; 
-      text-shadow: 4px -3px 0 var(--spider-red); 
-      display: inline-block; 
-      position: relative; 
-      transition: all 0.5s var(--fluid-curve); 
-      cursor: default;
-    }
+/* CONTACT SECTION & AMAZING EFFECT */
+/* CONTACT SECTION & AMAZING EFFECT */
+#contact { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
+.ct-big { font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 700; }
+.ct-big strong { font-weight: 800; color: #fff; }
 
-    .ct-big span.systems-glow::before, 
-    .ct-big span.systems-glow::after {
-      content: attr(data-text); 
-      position: absolute; inset: 0; z-index: -1; 
-      transition: all 0.5s var(--fluid-curve); 
-      pointer-events: none; 
-      opacity: 0;
-    }
+/* AMAZING: Using the high-end Vinayak physics */
+.ct-big span.systems-glow { 
+  color: transparent; 
+  -webkit-text-stroke: 2px #fff; 
+  text-shadow: 4px -3px 0 rgba(230, 43, 60, 0.9); 
+  display: inline-block; 
+  position: relative; 
+  transition: all 0.8s var(--fluid-curve); 
+  cursor: default; /* Keeps it feeling like a UI element */
+}
 
-    /* HOVER EFFECT: Scoped strictly to the text to prevent early activation */
-    .ct-big span.systems-glow:hover { 
-      /* Drains the red shadow into a deep OLED slate */
-      text-shadow: 4px -3px 0 rgba(20, 20, 20, 0.9);
-      transform: scale(1.05) skewX(-2deg); 
-    }
+.ct-big span.systems-glow::before, 
+.ct-big span.systems-glow::after {
+  content: attr(data-text); 
+  position: absolute; inset: 0; z-index: -1; 
+  transition: all 0.6s var(--fluid-curve); pointer-events: none; opacity: 0;
+}
 
-    /* The "Dimension Split": Red ghosts up-right, Cyan ghosts down-left */
-    .ct-big span.systems-glow:hover::before { 
-      opacity: 0.7; 
-      -webkit-text-stroke: 1.5px var(--spider-red); 
-      transform: translate(12px, -8px); 
-      filter: blur(1px);
-    }
+/* TRIGGER FIX: Changed from #contact:hover to the span:hover */
+.ct-big span.systems-glow:hover { 
+  color: #000000; 
+  -webkit-text-stroke: 2px #fff; 
+  text-shadow: 4px -3px 0 rgba(30, 30, 30, 0.9); 
+  transform: scale(1.02) translateX(4px); 
+}
 
-    .ct-big span.systems-glow:hover::after { 
-      opacity: 0.7; 
-      -webkit-text-stroke: 1.5px var(--spider-cyan); 
-      transform: translate(-12px, 8px); 
-      filter: blur(1px);
-    }
-    
-    #contact .glass-row { justify-content: center; margin-top: 4rem; }
+.ct-big span.systems-glow:hover::before { 
+  opacity: 0.8; 
+  -webkit-text-stroke: 1.5px var(--spider-red); 
+  transform: translate(14px, -8px); 
+  color: transparent; 
+}
+
+.ct-big span.systems-glow:hover::after { 
+  opacity: 0.5; 
+  color: var(--spider-blue); 
+  filter: blur(12px); 
+  transform: translate(-15px, 5px) scale(1.05); 
+}
+
+#contact .glass-row { justify-content: center; margin-top: 4rem; }
     /* SOFT SCROLL REVEALS */
     .rv-up { opacity: 0; transform: translateY(30px) translateZ(0); filter: blur(6px); transition: all 1.2s var(--fluid-curve); will-change: transform, opacity; }
     .rv-scale { opacity: 0; transform: scale(0.98) translateY(15px) translateZ(0); filter: blur(4px); transition: all 1.2s var(--fluid-curve); will-change: transform, opacity; }
