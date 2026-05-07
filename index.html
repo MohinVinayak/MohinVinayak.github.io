@@ -187,36 +187,24 @@
       transition: all 0.6s var(--fluid-curve);
     }
 
-    /* MOHIN: Base stays exactly as requested */
+    /* MOHIN */
     .mohin {
       color: #fff;
       text-shadow: -4px 3px 0 rgba(0, 194, 203, 0.8);
       transition: transform 0.5s var(--fluid-curve);
     }
-    
-    /* Hover: Slight scale up, cyan/blue optical dispersion */
     .mohin:hover { transform: scale(1.02); }
     .mohin::before { color: transparent; -webkit-text-stroke: 1.5px var(--spider-cyan); }
     .mohin::after { color: var(--spider-blue); filter: blur(12px); mix-blend-mode: screen; }
-    
-    .mohin:hover::before {
-      opacity: 0.8;
-      transform: translate(-14px, 8px);
-    }
-    .mohin:hover::after {
-      opacity: 0.5;
-      transform: translate(15px, -5px) scale(1.05);
-    }
+    .mohin:hover::before { opacity: 0.8; transform: translate(-14px, 8px); }
+    .mohin:hover::after { opacity: 0.5; transform: translate(15px, -5px) scale(1.05); }
 
-    /* VINAYAK: Sharp white outline, heavy red shadow */
- /* VINAYAK: Sharp white outline + red block shadow BASE */
+    /* VINAYAK */
     .vinayak { 
       color: transparent; 
       -webkit-text-stroke: 2px #fff; 
       text-shadow: 4px -3px 0 rgba(230, 43, 60, 0.9); 
     }
-
-    /* Hover: Fills OLED black, ghosts red/blue skeletons */
     .vinayak:hover { 
       color: #000000; 
       -webkit-text-stroke: 2px #fff; 
@@ -262,10 +250,32 @@
     .gb svg { width: 16px; height: 16px; opacity: 0.7; transition: opacity 0.4s, transform 0.4s var(--fluid-curve); position: relative; z-index: 2; }
     .gb:hover svg { opacity: 1; transform: scale(1.1); }
 
-    /* SECTIONS */
-    section { padding: 10rem 5vw; position: relative; z-index: 5; }
+    /* --- NEW: Special Highlight Button --- */
+    .gb.special {
+      border-color: rgba(0, 194, 203, 0.5);
+      border-top-color: var(--spider-cyan);
+      background: rgba(0, 194, 203, 0.1);
+      box-shadow: 0 0 20px rgba(0, 194, 203, 0.25), inset 0 0 10px rgba(0, 194, 203, 0.1);
+      color: #fff;
+      animation: pulse-glow 2.5s infinite alternate var(--fluid-curve);
+    }
+    .gb.special svg {
+      stroke: var(--spider-cyan);
+      opacity: 1;
+    }
+    .gb.special:hover {
+      background: rgba(0, 194, 203, 0.2);
+      border-color: var(--spider-cyan);
+      box-shadow: 0 0 35px rgba(0, 194, 203, 0.5), inset 0 0 15px rgba(0, 194, 203, 0.3);
+      transform: translateY(-4px) scale(1.02);
+    }
     
-/* SECTIONS */
+    @keyframes pulse-glow {
+      0% { box-shadow: 0 0 15px rgba(0, 194, 203, 0.2), inset 0 0 5px rgba(0, 194, 203, 0.1); }
+      100% { box-shadow: 0 0 30px rgba(0, 194, 203, 0.5), inset 0 0 15px rgba(0, 194, 203, 0.2); border-color: rgba(0, 194, 203, 0.8); }
+    }
+
+    /* SECTIONS */
     section { padding: 10rem 5vw; position: relative; z-index: 5; }
     
     .sn { 
@@ -283,13 +293,6 @@
     }
     .sn.scroll-active::after { 
       background: linear-gradient(90deg, var(--spider-red), transparent); box-shadow: 0 0 12px var(--spider-red-glow); height: 2px; transform: translateX(10px);
-    }
-    
-    @keyframes header-reveal {
-      0% { transform: translateX(-50px) scale(0.95); text-shadow: -15px 0 20px rgba(230, 43, 60, 0.5), 15px 0 20px rgba(0, 194, 203, 0.5); opacity: 0; filter: blur(10px); }
-      30% { opacity: 1; filter: blur(2px); }
-      50% { transform: translateX(10px) scale(1.02); text-shadow: 8px 0 10px rgba(230, 43, 60, 0.3), -8px 0 10px rgba(0, 194, 203, 0.3); }
-      100% { transform: translateX(0px) scale(1); text-shadow: -5px 0 0 rgba(230, 43, 60, 0.8), 5px 0 0 rgba(0, 102, 204, 0.8), 0 0 15px rgba(230, 43, 60, 0.4); opacity: 1; filter: blur(0); }
     }
 
     /* ABOUT */
@@ -331,7 +334,6 @@
     
     .pj-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 1.2rem; transition: all 0.5s var(--fluid-curve); color: #fff; }
     
-    /* Strict red shadow on hover ONLY for Project Name */
     .pj:hover .pj-name { 
       color: transparent; 
       -webkit-text-stroke: 1.5px #fff; 
@@ -352,7 +354,6 @@
     }
     
     .pj:hover .pt { color: #fff; transform: translateY(-2px); }
-    
     .pj:hover .pt:nth-child(1) { border-color: var(--spider-red); box-shadow: 0 0 12px var(--spider-red-glow); background: rgba(230, 43, 60, 0.05); transition-delay: 0.0s; }
     .pj:hover .pt:nth-child(2) { border-color: var(--spider-blue); box-shadow: 0 0 12px var(--spider-blue-glow); background: rgba(0, 102, 204, 0.05); transition-delay: 0.05s; }
     .pj:hover .pt:nth-child(3) { border-color: var(--spider-cyan); box-shadow: 0 0 12px rgba(0, 194, 203, 0.4); background: rgba(0, 194, 203, 0.05); transition-delay: 0.1s; }
@@ -376,87 +377,57 @@
       backdrop-filter: blur(10px); transform: translateZ(0); 
     }
 
-    /* "Spider-Sense Focus" effect: Hovering the cloud blurs/dims inactive skills mildly */
     .sk-cloud:hover .sk {
-      opacity: 0.5;
-      filter: blur(1px);
-      transform: scale(0.98);
-      border-color: rgba(255,255,255,0.05);
+      opacity: 0.5; filter: blur(1px); transform: scale(0.98); border-color: rgba(255,255,255,0.05);
     }
     
-    /* Highlight the hovered skill */
     .sk-cloud .sk:hover {
-      opacity: 1;
-      filter: blur(0);
-      transform: scale(1.1) translateY(-5px);
-      color: #fff;
-      background: rgba(230, 43, 60, 0.1);
-      border-color: var(--spider-red);
-      box-shadow: 0 15px 30px var(--spider-red-glow), inset 0 0 15px rgba(230,43,60,0.3);
-      z-index: 10;
+      opacity: 1; filter: blur(0); transform: scale(1.1) translateY(-5px); color: #fff;
+      background: rgba(230, 43, 60, 0.1); border-color: var(--spider-red);
+      box-shadow: 0 15px 30px var(--spider-red-glow), inset 0 0 15px rgba(230,43,60,0.3); z-index: 10;
     }
     
-    /* Alternate colors for the spidey aesthetic */
     .sk-cloud .sk:nth-child(even):hover {
-      background: rgba(0, 194, 203, 0.1);
-      border-color: var(--spider-cyan);
+      background: rgba(0, 194, 203, 0.1); border-color: var(--spider-cyan);
       box-shadow: 0 15px 30px rgba(0,194,203,0.4), inset 0 0 15px rgba(0,194,203,0.3);
     }
     
     .sk-cloud .sk:nth-child(3n):hover {
-      background: rgba(0, 102, 204, 0.1);
-      border-color: var(--spider-blue);
+      background: rgba(0, 102, 204, 0.1); border-color: var(--spider-blue);
       box-shadow: 0 15px 30px var(--spider-blue-glow), inset 0 0 15px rgba(0,102,204,0.3);
     }
 
-    /* CONTACT */
-/* CONTACT SECTION & AMAZING EFFECT */
-/* CONTACT SECTION & AMAZING EFFECT */
-#contact { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
-.ct-big { font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 700; }
-.ct-big strong { font-weight: 800; color: #fff; }
+    /* CONTACT SECTION & AMAZING EFFECT */
+    #contact { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
+    .ct-big { font-size: clamp(3.5rem, 8vw, 7rem); line-height: 1.1; margin-bottom: 1rem; font-weight: 700; }
+    .ct-big strong { font-weight: 800; color: #fff; }
 
-/* AMAZING: Using the high-end Vinayak physics */
-.ct-big span.systems-glow { 
-  color: transparent; 
-  -webkit-text-stroke: 2px #fff; 
-  text-shadow: 4px -3px 0 rgba(230, 43, 60, 0.9); 
-  display: inline-block; 
-  position: relative; 
-  transition: all 0.8s var(--fluid-curve); 
-  cursor: default; /* Keeps it feeling like a UI element */
-}
+    .ct-big span.systems-glow { 
+      color: transparent; -webkit-text-stroke: 2px #fff; text-shadow: 4px -3px 0 rgba(230, 43, 60, 0.9); 
+      display: inline-block; position: relative; transition: all 0.8s var(--fluid-curve); cursor: default;
+    }
 
-.ct-big span.systems-glow::before, 
-.ct-big span.systems-glow::after {
-  content: attr(data-text); 
-  position: absolute; inset: 0; z-index: -1; 
-  transition: all 0.6s var(--fluid-curve); pointer-events: none; opacity: 0;
-}
+    .ct-big span.systems-glow::before, 
+    .ct-big span.systems-glow::after {
+      content: attr(data-text); position: absolute; inset: 0; z-index: -1; 
+      transition: all 0.6s var(--fluid-curve); pointer-events: none; opacity: 0;
+    }
 
-/* TRIGGER FIX: Changed from #contact:hover to the span:hover */
-.ct-big span.systems-glow:hover { 
-  color: #000000; 
-  -webkit-text-stroke: 2px #fff; 
-  text-shadow: 4px -3px 0 rgba(30, 30, 30, 0.9); 
-  transform: scale(1.02) translateX(4px); 
-}
+    .ct-big span.systems-glow:hover { 
+      color: #000000; -webkit-text-stroke: 2px #fff; text-shadow: 4px -3px 0 rgba(30, 30, 30, 0.9); 
+      transform: scale(1.02) translateX(4px); 
+    }
 
-.ct-big span.systems-glow:hover::before { 
-  opacity: 0.8; 
-  -webkit-text-stroke: 1.5px var(--spider-red); 
-  transform: translate(14px, -8px); 
-  color: transparent; 
-}
+    .ct-big span.systems-glow:hover::before { 
+      opacity: 0.8; -webkit-text-stroke: 1.5px var(--spider-red); transform: translate(14px, -8px); color: transparent; 
+    }
 
-.ct-big span.systems-glow:hover::after { 
-  opacity: 0.5; 
-  color: var(--spider-blue); 
-  filter: blur(12px); 
-  transform: translate(-15px, 5px) scale(1.05); 
-}
+    .ct-big span.systems-glow:hover::after { 
+      opacity: 0.5; color: var(--spider-blue); filter: blur(12px); transform: translate(-15px, 5px) scale(1.05); 
+    }
 
-#contact .glass-row { justify-content: center; margin-top: 4rem; }
+    #contact .glass-row { justify-content: center; margin-top: 4rem; }
+    
     /* SOFT SCROLL REVEALS */
     .rv-up { opacity: 0; transform: translateY(30px) translateZ(0); filter: blur(6px); transition: all 1.2s var(--fluid-curve); will-change: transform, opacity; }
     .rv-scale { opacity: 0; transform: scale(0.98) translateY(15px) translateZ(0); filter: blur(4px); transition: all 1.2s var(--fluid-curve); will-change: transform, opacity; }
@@ -526,6 +497,12 @@
     </h1>
     <div class="hero-sub rv-up on d2"><strong>ENC student at TIET.</strong><br>Engineering high-performance systems and building fun projects.</div>
     <div class="glass-row center rv-scale on d3">
+      
+      <!-- NEW V2 PORTFOLIO BUTTON (SPECIAL CLASS) - POSITIONED FIRST -->
+      <a href="https://pf2-q223-kl8rvuahm-mohinvinayak-3707s-projects.vercel.app/" target="_blank" class="gb special">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> View New Site (v2)
+      </a>
+
       <a href="mailto:mohinvinayak@gmail.com" class="gb">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email
       </a>
@@ -616,6 +593,11 @@
   <span class="systems-glow name-part" data-text="Amazing.">Amazing.</span>
 </h2>
     <div class="glass-row">
+      <!-- NEW V2 PORTFOLIO BUTTON (SPECIAL CLASS) - POSITIONED FIRST -->
+      <a href="https://pf2-q223-kl8rvuahm-mohinvinayak-3707s-projects.vercel.app/" target="_blank" class="gb special">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> View New Site (v2)
+      </a>
+
       <a href="mailto:mohinvinayak@gmail.com" class="gb">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Email
       </a>
@@ -713,6 +695,7 @@
       }, { threshold: 0.7 });
 
       document.querySelectorAll('.sn').forEach(el => headingObserver.observe(el));
+      
     });
   </script>
 </body>
